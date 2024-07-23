@@ -1,9 +1,12 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import { env } from "@/config/env";
 
 function App() {
 	const [count, setCount] = useState(0);
+
+	console.log(env.categoriesApiUrl);
 
 	return (
 		<>
