@@ -3,13 +3,13 @@ module.exports = {
 	env: { browser: true, es2020: true },
 	extends: [
 		'eslint:recommended',
-		'xo',
-		'xo-typescript',
 		'plugin:@typescript-eslint/strict-type-checked',
 		'plugin:@typescript-eslint/stylistic-type-checked',
 		'plugin:react-hooks/recommended',
 		'plugin:react/recommended',
 		'plugin:react/jsx-runtime',
+		'xo',
+		'xo-typescript',
 		'prettier',
 	],
 	settings: {
@@ -59,7 +59,12 @@ module.exports = {
 		project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
 		tsconfigRootDir: __dirname,
 	},
-	ignorePatterns: ['dist', '.eslintrc.cjs'],
+	ignorePatterns: [
+		'dist',
+		'.eslintrc.cjs',
+		'postcss.config.js',
+		'tailwind.config.ts',
+	],
 	parser: '@typescript-eslint/parser',
 	plugins: ['react-refresh'],
 	rules: {
