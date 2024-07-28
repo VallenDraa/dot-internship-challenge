@@ -68,6 +68,7 @@ module.exports = {
 	parser: "@typescript-eslint/parser",
 	plugins: ["react-refresh"],
 	rules: {
+		"react/prop-types": "off",
 		"@typescript-eslint/naming-convention": [
 			"error",
 			{
