@@ -1,8 +1,8 @@
-import axios from "axios";
 import { type User } from "../types/user-type";
+import { authApi } from "@/lib/axios";
 
 export const getLoggedInUserApi = async (bearerToken: string) => {
-	const { data } = await axios.get<User>("https://dummyjson.com/auth/me", {
+	const { data } = await authApi.get<User>("/me", {
 		headers: { Authorization: bearerToken },
 	});
 

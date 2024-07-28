@@ -8,3 +8,7 @@ export const questionsApi = axios.create({
 export const categoriesApi = axios.create({
 	baseURL: env.categoriesApiUrl,
 });
+
+export const authApi = axios.create({
+	baseURL: env.authApiUrl,
+});
