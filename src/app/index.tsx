@@ -18,8 +18,12 @@ const AppRouter = () => {
 export function App() {
 	return (
 		<Providers queryClient={queryClient}>
-			<Toaster />
-			<AppRouter />
+			<div className="min-h-screen bg-amber-300">
+				<div className="mx-auto max-w-screen-lg px-4 font-mono">
+					<Toaster closeButton richColors position="bottom-center" />
+					<AppRouter />
+				</div>
+			</div>
 		</Providers>
 	);
 }

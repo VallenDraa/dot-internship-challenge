@@ -9,9 +9,18 @@ export const useHandleLogin = () => {
 	const [username, setUsername] = React.useState("");
 	const [password, setPassword] = React.useState("");
 
+	const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+	const resetForm = React.useCallback(() => {
+		setUsername("");
+		setPassword("");
+	}, []);
+
 	const handleLogin = React.useCallback(
 		async (username: string, password: string) => {
 			try {
+				setIsSubmitting(true);
+
 				const parsedInputs = await loginValidator.parseAsync({
 					username,
 					password,
@@ -25,16 +34,25 @@ export const useHandleLogin = () => {
 				setAccessToken(loginResponse.token);
 				setRefreshToken(loginResponse.refreshToken);
 
-				setUsername("");
-				setPassword("");
+				resetForm();
 
 				toast.success("Logged in successfully");
 			} catch (error) {
 				toast.error(getErrorMessage(error));
+			} finally {
+				setIsSubmitting(false);
 			}
 		},
-		[],
+		[resetForm],
 	);
 
-	return { handleLogin, setUsername, setPassword, username, password };
+	return {
+		handleLogin,
+		setUsername,
+		setPassword,
+		username,
+		password,
+		isSubmitting,
+		resetForm,
+	};
 };
