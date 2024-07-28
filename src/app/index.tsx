@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import { Providers } from "./providers";
 import { createRouter } from "./routes";
 import { queryClient } from "@/lib/react-query";
+import { Toaster } from "sonner";
 
 const AppRouter = () => {
 	const queryClient = useQueryClient();
@@ -14,12 +15,11 @@ const AppRouter = () => {
 	return <RouterProvider router={router} />;
 };
 
-function App() {
+export function App() {
 	return (
 		<Providers queryClient={queryClient}>
+			<Toaster />
 			<AppRouter />
 		</Providers>
 	);
 }
-
-export default App;

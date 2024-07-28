@@ -72,7 +72,7 @@ module.exports = {
 			"error",
 			{
 				selector: "variableLike",
-				format: ["camelCase", "PascalCase"],
+				format: ["camelCase", "PascalCase", "UPPER_CASE"],
 			},
 		],
 		"react-refresh/only-export-components": [
