@@ -1,8 +1,11 @@
 export type User = {
-	id: string;
+	id: number;
 	username: string;
 	email: string;
-	password: string;
+	firstName: string;
+	lastName: string;
+	gender: string;
+	image: string;
 };
 
 export type UserCreate = {
