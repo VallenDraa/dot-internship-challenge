@@ -2,7 +2,11 @@ import { Input } from "@/features/shared/components/ui/input";
 import { useHandleLogin } from "../../hooks/use-handle-login";
 import { Button } from "@/features/shared/components/ui/button";
 
-export const LoginForm = () => {
+export type LoginFormProps = {
+	redirectTo?: string;
+};
+
+export const LoginForm = (props: LoginFormProps) => {
 	const {
 		isSubmitting,
 		username,
@@ -10,7 +14,7 @@ export const LoginForm = () => {
 		password,
 		setPassword,
 		handleLogin,
-	} = useHandleLogin();
+	} = useHandleLogin(props.redirectTo);
 
 	return (
 		<form

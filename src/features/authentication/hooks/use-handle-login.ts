@@ -3,9 +3,10 @@ import { loginApi } from "../api/login-api";
 import { loginValidator } from "../validators/login-validator";
 import { toast } from "sonner";
 import { getErrorMessage } from "@/features/shared/utils/get-error-message";
-import { setAccessToken, setRefreshToken } from "../utils/tokens";
+import { setRefreshToken } from "../utils/refresh-token";
+import { useNavigate } from "react-router-dom";
 
-export const useHandleLogin = () => {
+export const useHandleLogin = (redirectTo?: string) => {
 	const [username, setUsername] = React.useState("");
 	const [password, setPassword] = React.useState("");
 
@@ -16,6 +17,7 @@ export const useHandleLogin = () => {
 		setPassword("");
 	}, []);
 
+	const navigate = useNavigate();
 	const handleLogin = React.useCallback(
 		async (username: string, password: string) => {
 			try {
@@ -31,19 +33,19 @@ export const useHandleLogin = () => {
 					parsedInputs.password,
 				);
 
-				setAccessToken(loginResponse.token);
 				setRefreshToken(loginResponse.refreshToken);
 
 				resetForm();
 
 				toast.success("Logged in successfully");
+				navigate(redirectTo ?? "/");
 			} catch (error) {
 				toast.error(getErrorMessage(error));
 			} finally {
 				setIsSubmitting(false);
 			}
 		},
-		[resetForm],
+		[resetForm, navigate, redirectTo],
 	);
 
 	return {

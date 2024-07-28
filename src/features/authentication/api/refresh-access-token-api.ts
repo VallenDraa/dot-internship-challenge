@@ -1,18 +1,18 @@
 import axios from "axios";
-import { getBearerToken } from "../utils/tokens";
 import { type TokenResponse } from "../types/token-type";
+import { getRefreshToken } from "../utils/refresh-token";
 
-export const getLoggedInUserApi = async () => {
-	const bearerToken = getBearerToken();
+export const refreshAccessTokenApi = async () => {
+	const refreshToken = getRefreshToken();
 
-	if (!bearerToken) {
+	if (!refreshToken) {
 		throw new Error("You are unaunthenticated!");
 	}
 
 	const { data } = await axios.post<TokenResponse>(
 		"https://dummyjson.com/auth/refresh",
-		{ headers: { Authorization: bearerToken } },
+		{ refreshToken },
 	);
 
-	return data;
+	return data.token;
 };
