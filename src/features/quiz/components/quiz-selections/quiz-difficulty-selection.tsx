@@ -22,8 +22,8 @@ export const QuizDifficultySelection = (
 	return (
 		<Combobox
 			value={selected}
-			onChange={(value: QuizDifficulty | null) => {
-				onChange(value);
+			onChange={(value: QuizDifficulty) => {
+				onChange((value as string) === "" ? null : value);
 			}}
 			onClose={() => {
 				setQuery("");
@@ -37,6 +37,10 @@ export const QuizDifficultySelection = (
 			/>
 
 			<Combobox.Options className="capitalize">
+				<Combobox.Option value="">
+					<CheckIcon className="invisible size-4 fill-black group-data-[selected]:visible" />
+					<div className="text-sm/6 capitalize">Any</div>
+				</Combobox.Option>
 				{filteredDifficulties.map(difficulty => (
 					<Combobox.Option key={difficulty} value={difficulty}>
 						<CheckIcon className="invisible size-4 fill-black group-data-[selected]:visible" />

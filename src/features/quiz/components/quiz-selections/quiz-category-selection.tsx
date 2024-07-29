@@ -37,8 +37,8 @@ export const QuizCategorySelection = (props: QuizCategorySelectionProps) => {
 				>
 					<Combobox
 						value={selected}
-						onChange={(value: string | null) => {
-							onChange(value);
+						onChange={(value: string) => {
+							onChange(value || null);
 						}}
 						onClose={() => {
 							setQuery("");
@@ -52,13 +52,17 @@ export const QuizCategorySelection = (props: QuizCategorySelectionProps) => {
 						/>
 
 						<Combobox.Options className="capitalize [--anchor-max-height:12rem]">
+							<Combobox.Option value="">
+								<CheckIcon className="invisible size-4 fill-black group-data-[selected]:visible" />
+								<div className="text-sm/6 capitalize">Any</div>
+							</Combobox.Option>
 							{filteredCategories?.map(category => (
 								<Combobox.Option
 									key={category.id}
 									value={category.id.toString()}
 								>
 									<CheckIcon className="invisible size-4 fill-black group-data-[selected]:visible" />
-									<div className="text-sm/6 capitalize">{category.name}</div>
+									<div className="text-sm/6 capitalize">{`${category.id} - ${category.name}`}</div>
 								</Combobox.Option>
 							))}
 						</Combobox.Options>

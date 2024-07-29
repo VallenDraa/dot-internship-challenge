@@ -20,8 +20,8 @@ export const QuizTypeSelection = (props: QuizTypeSelectionProps) => {
 	return (
 		<Combobox
 			value={selected}
-			onChange={(value: QuizType | null) => {
-				onChange(value);
+			onChange={(value: QuizType) => {
+				onChange((value as string) === "" ? null : value);
 			}}
 			onClose={() => {
 				setQuery("");
@@ -35,6 +35,10 @@ export const QuizTypeSelection = (props: QuizTypeSelectionProps) => {
 			/>
 
 			<Combobox.Options className="capitalize">
+				<Combobox.Option value="">
+					<CheckIcon className="invisible size-4 fill-black group-data-[selected]:visible" />
+					<div className="text-sm/6 capitalize">Any</div>
+				</Combobox.Option>
 				{filteredTypes.map(type => (
 					<Combobox.Option key={type} value={type}>
 						<CheckIcon className="invisible size-4 fill-black group-data-[selected]:visible" />
