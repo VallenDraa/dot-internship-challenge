@@ -1,7 +1,7 @@
 import React from "react";
 import { Combobox } from "@/features/shared/components/ui/combobox";
-import { useQuizCategories } from "../query/get-quiz-categories-query";
-import { type Category } from "../types/quiz-type";
+import { useQuizCategories } from "@/features/quiz/query/get-quiz-categories-query";
+import { type Category } from "@/features/quiz/types/quiz-type";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { cn } from "@/features/shared/utils/cn";
 import { Transition } from "@headlessui/react";
@@ -52,11 +52,11 @@ export const QuizCategorySelection = (props: QuizCategorySelectionProps) => {
 							}}
 						/>
 
-						<Combobox.Options>
+						<Combobox.Options className="capitalize [--anchor-max-height:12rem]">
 							{filteredCategories?.map(category => (
 								<Combobox.Option key={category.id} value={category.name}>
 									<CheckIcon className="invisible size-4 fill-black group-data-[selected]:visible" />
-									<div className="text-sm/6">{category.name}</div>
+									<div className="text-sm/6 capitalize">{category.name}</div>
 								</Combobox.Option>
 							))}
 						</Combobox.Options>
