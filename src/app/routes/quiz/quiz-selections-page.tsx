@@ -8,11 +8,10 @@ export const quizSelectionsPageLoader =
 	(queryClient: QueryClient) => async () => {
 		const quizCategoryQuery = quizCategoriesOptions();
 
-		const quizCategories =
+		return (
 			queryClient.getQueryData(quizCategoryQuery.queryKey) ??
-			(await queryClient.fetchQuery(quizCategoryQuery));
-
-		return { quizCategories };
+			queryClient.fetchQuery(quizCategoryQuery)
+		);
 	};
 
 export const QuizSelectionsPage = () => (

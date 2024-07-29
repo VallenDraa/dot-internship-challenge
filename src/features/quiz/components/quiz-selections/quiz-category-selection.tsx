@@ -1,7 +1,6 @@
 import React from "react";
 import { Combobox } from "@/features/shared/components/ui/combobox";
 import { useQuizCategories } from "@/features/quiz/query/get-quiz-categories-query";
-import { type Category } from "@/features/quiz/types/quiz-type";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import { cn } from "@/features/shared/utils/cn";
 import { Transition } from "@headlessui/react";
@@ -11,8 +10,8 @@ export const QuizCategorySelectionSkeleton = () => (
 );
 
 export type QuizCategorySelectionProps = {
-	selected: Category | null;
-	onChange: (category: Category | null) => void;
+	selected: string | null;
+	onChange: (categoryId: string | null) => void;
 };
 
 export const QuizCategorySelection = (props: QuizCategorySelectionProps) => {
@@ -38,7 +37,7 @@ export const QuizCategorySelection = (props: QuizCategorySelectionProps) => {
 				>
 					<Combobox
 						value={selected}
-						onChange={(value: Category | null) => {
+						onChange={(value: string | null) => {
 							onChange(value);
 						}}
 						onClose={() => {
@@ -54,7 +53,10 @@ export const QuizCategorySelection = (props: QuizCategorySelectionProps) => {
 
 						<Combobox.Options className="capitalize [--anchor-max-height:12rem]">
 							{filteredCategories?.map(category => (
-								<Combobox.Option key={category.id} value={category.name}>
+								<Combobox.Option
+									key={category.id}
+									value={category.id.toString()}
+								>
 									<CheckIcon className="invisible size-4 fill-black group-data-[selected]:visible" />
 									<div className="text-sm/6 capitalize">{category.name}</div>
 								</Combobox.Option>

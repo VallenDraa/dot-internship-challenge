@@ -1,13 +1,12 @@
 import React from "react";
 import {
 	type QuizDifficulty,
-	type Category,
 	type QuizType,
 } from "@/features/quiz/types/quiz-type";
 import { createSearchParams, useNavigate } from "react-router-dom";
 
 export const useQuizSelectionHandler = () => {
-	const [category, setCategory] = React.useState<Category | null>(null);
+	const [category, setCategory] = React.useState<string | null>(null);
 	const [difficulty, setDifficulty] = React.useState<QuizDifficulty | null>(
 		null,
 	);
@@ -30,7 +29,7 @@ export const useQuizSelectionHandler = () => {
 		};
 
 		if (category) {
-			params.category = category.id.toString();
+			params.category = category;
 		}
 
 		if (difficulty) {
