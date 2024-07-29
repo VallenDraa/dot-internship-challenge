@@ -6,10 +6,11 @@ import { refreshAccessTokenApi } from "../api/refresh-access-token-api";
 export const ACCESS_TOKEN_QUERY = "access-token";
 
 // Refetch token every 58 minutes
-const staleTime = 1000 * 60 * 58; 
+const staleTime = 1000 * 60 * 58;
 export const accessTokenOptions = () =>
 	queryOptions({
 		staleTime,
+		refetchIntervalInBackground: true,
 		refetchInterval: staleTime,
 		queryKey: [ACCESS_TOKEN_QUERY],
 		queryFn: refreshAccessTokenApi,
