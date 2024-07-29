@@ -23,10 +23,13 @@ export const useQuizSelectionHandler = () => {
 	);
 
 	const navigate = useNavigate();
+	const [isQuizStarting, setIsQuizStarting] = React.useState(false);
 	const startQuizSession = React.useCallback(() => {
 		const params: Record<string, string> = {
 			amount: amount.toString(),
 		};
+
+		setIsQuizStarting(true);
 
 		if (category) {
 			params.category = category;
@@ -48,6 +51,7 @@ export const useQuizSelectionHandler = () => {
 
 	return {
 		category,
+		isQuizStarting,
 		setCategory,
 		difficulty,
 		setDifficulty,

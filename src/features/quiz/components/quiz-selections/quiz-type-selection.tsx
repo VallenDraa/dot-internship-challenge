@@ -4,12 +4,13 @@ import { type QuizType } from "../../types/quiz-type";
 import { CheckIcon } from "@heroicons/react/20/solid";
 
 export type QuizTypeSelectionProps = {
+	disabled?: boolean;
 	selected: QuizType | null;
 	onChange: (category: QuizType | null) => void;
 };
 
 export const QuizTypeSelection = (props: QuizTypeSelectionProps) => {
-	const { selected, onChange } = props;
+	const { disabled, selected, onChange } = props;
 	const types: QuizType[] = ["boolean", "multiple"];
 
 	const [query, setQuery] = React.useState("");
@@ -20,6 +21,7 @@ export const QuizTypeSelection = (props: QuizTypeSelectionProps) => {
 	return (
 		<Combobox
 			value={selected}
+			disabled={disabled}
 			onChange={(value: QuizType) => {
 				onChange((value as string) === "" ? null : value);
 			}}

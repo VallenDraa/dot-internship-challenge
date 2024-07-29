@@ -10,6 +10,7 @@ export const QuizSelections = () => {
 		amount,
 		category,
 		difficulty,
+		isQuizStarting,
 		setAmount,
 		setCategory,
 		setDifficulty,
@@ -22,6 +23,7 @@ export const QuizSelections = () => {
 		<div>
 			<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 				<Input
+					disabled={isQuizStarting}
 					type="number"
 					label="Question Amount"
 					min={1}
@@ -31,15 +33,28 @@ export const QuizSelections = () => {
 						setAmount(e.target.valueAsNumber);
 					}}
 				/>
-				<QuizTypeSelection selected={type} onChange={setType} />
+				<QuizTypeSelection
+					disabled={isQuizStarting}
+					selected={type}
+					onChange={setType}
+				/>
 				<QuizDifficultySelection
+					disabled={isQuizStarting}
 					selected={difficulty}
 					onChange={setDifficulty}
 				/>
-				<QuizCategorySelection selected={category} onChange={setCategory} />
+				<QuizCategorySelection
+					disabled={isQuizStarting}
+					selected={category}
+					onChange={setCategory}
+				/>
 			</div>
 
-			<Button onClick={startQuizSession} className="mt-8 w-full">
+			<Button
+				disabled={isQuizStarting}
+				onClick={startQuizSession}
+				className="mt-8 w-full"
+			>
 				Start Quiz
 			</Button>
 		</div>

@@ -10,12 +10,13 @@ export const QuizCategorySelectionSkeleton = () => (
 );
 
 export type QuizCategorySelectionProps = {
+	disabled?: boolean;
 	selected: string | null;
 	onChange: (categoryId: string | null) => void;
 };
 
 export const QuizCategorySelection = (props: QuizCategorySelectionProps) => {
-	const { selected, onChange } = props;
+	const { disabled, selected, onChange } = props;
 	const { data: categories, isLoading } = useQuizCategories();
 
 	const [query, setQuery] = React.useState("");
@@ -36,6 +37,7 @@ export const QuizCategorySelection = (props: QuizCategorySelectionProps) => {
 					)}
 				>
 					<Combobox
+						disabled={disabled}
 						value={selected}
 						onChange={(value: string) => {
 							onChange(value || null);

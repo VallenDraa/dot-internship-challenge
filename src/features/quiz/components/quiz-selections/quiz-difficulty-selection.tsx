@@ -4,6 +4,7 @@ import { type QuizDifficulty } from "@/features/quiz/types/quiz-type";
 import { CheckIcon } from "@heroicons/react/20/solid";
 
 export type QuizDifficultySelectionProps = {
+	disabled?: boolean;
 	selected: QuizDifficulty | null;
 	onChange: (category: QuizDifficulty | null) => void;
 };
@@ -11,7 +12,7 @@ export type QuizDifficultySelectionProps = {
 export const QuizDifficultySelection = (
 	props: QuizDifficultySelectionProps,
 ) => {
-	const { selected, onChange } = props;
+	const { disabled, selected, onChange } = props;
 	const difficulties: QuizDifficulty[] = ["easy", "medium", "hard"];
 
 	const [query, setQuery] = React.useState("");
@@ -22,6 +23,7 @@ export const QuizDifficultySelection = (
 	return (
 		<Combobox
 			value={selected}
+			disabled={disabled}
 			onChange={(value: QuizDifficulty) => {
 				onChange((value as string) === "" ? null : value);
 			}}
