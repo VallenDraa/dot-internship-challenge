@@ -19,7 +19,7 @@ export const QuizSelections = () => {
 	} = useQuizSelectionHandler();
 
 	return (
-		<form onSubmit={startQuizSession}>
+		<div>
 			<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
 				<Input
 					type="number"
@@ -39,9 +39,9 @@ export const QuizSelections = () => {
 				<QuizCategorySelection selected={category} onChange={setCategory} />
 			</div>
 
-			<Button type="submit" className="mt-8 w-full">
+			<Button onClick={startQuizSession} className="mt-8 w-full">
 				Start Quiz
 			</Button>
-		</form>
+		</div>
 	);
 };

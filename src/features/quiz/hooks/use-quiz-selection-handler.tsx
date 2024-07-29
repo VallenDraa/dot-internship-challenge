@@ -4,7 +4,7 @@ import {
 	type Category,
 	type QuizType,
 } from "@/features/quiz/types/quiz-type";
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 
 export const useQuizSelectionHandler = () => {
 	const [category, setCategory] = React.useState<Category | null>(null);
@@ -24,16 +24,28 @@ export const useQuizSelectionHandler = () => {
 	);
 
 	const navigate = useNavigate();
-	const startQuizSession = React.useCallback(
-		(e: React.FormEvent) => {
-			e.preventDefault();
+	const startQuizSession = React.useCallback(() => {
+		const params: Record<string, string> = {
+			amount: amount.toString(),
+		};
 
-			navigate("/play", {
-				state: { category, difficulty, type, amount },
-			});
-		},
-		[amount, category, difficulty, navigate, type],
-	);
+		if (category) {
+			params.category = category.id.toString();
+		}
+
+		if (difficulty) {
+			params.difficulty = difficulty as string;
+		}
+
+		if (type) {
+			params.type = type;
+		}
+
+		navigate({
+			pathname: "/play",
+			search: createSearchParams(params).toString(),
+		});
+	}, [amount, category, difficulty, navigate, type]);
 
 	return {
 		category,
