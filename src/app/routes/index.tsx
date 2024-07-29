@@ -18,7 +18,7 @@ export const createRouter = (
 					path: "/",
 					async lazy() {
 						const { QuizLandingPage } = await import(
-							"./quiz/quiz-landing-page"
+							"./quiz/quiz-selections-page"
 						);
 						return { Component: QuizLandingPage };
 					},

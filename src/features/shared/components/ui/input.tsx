@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import {
 	Description,
 	Field,
@@ -6,6 +7,11 @@ import {
 	type InputProps as HeadlessInputProps,
 } from "@headlessui/react";
 import { cn } from "../../utils/cn";
+import { cva, type VariantProps } from "class-variance-authority";
+
+export const inputVariants = cva(
+	"w-full rounded-none border-b-2 border-neutral-700 bg-transparent py-1 outline-none transition-colors focus:outline-none data-[focus]:border-black",
+);
 
 export type InputProps = {
 	label?: string;
@@ -16,7 +22,8 @@ export type InputProps = {
 		description?: string;
 		input: string;
 	};
-} & HeadlessInputProps;
+} & HeadlessInputProps &
+	VariantProps<typeof inputVariants>;
 
 export const Input = (props: InputProps) => {
 	const {
@@ -33,7 +40,7 @@ export const Input = (props: InputProps) => {
 			{label && (
 				<Label
 					className={cn(
-						"d-flex items-start gap-1 text-sm font-medium text-black",
+						"d-flex items-start gap-1 text-sm font-medium text-neutral-700",
 						classNames?.label,
 					)}
 				>
@@ -44,11 +51,7 @@ export const Input = (props: InputProps) => {
 			<HeadlessInput
 				{...rest}
 				required={required}
-				className={cn(
-					"w-full rounded-none border-b-2 border-neutral-700 bg-transparent py-1 outline-none transition-colors",
-					"focus:outline-none data-[focus]:border-black",
-					classNames?.input,
-				)}
+				className={cn(inputVariants({ className: classNames?.input }))}
 			/>
 
 			{description && (
