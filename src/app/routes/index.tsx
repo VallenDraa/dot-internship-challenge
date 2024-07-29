@@ -1,6 +1,7 @@
 import { type QueryClient } from "@tanstack/react-query";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import { ProtectedRoute } from "./protected-route";
+import { quizSelectionsPageLoader } from "./quiz/quiz-selections-page";
 
 export const createRouter = (
 	queryClient: QueryClient,
@@ -16,6 +17,7 @@ export const createRouter = (
 			children: [
 				{
 					path: "/",
+					loader: quizSelectionsPageLoader(queryClient),
 					async lazy() {
 						const { QuizSelectionsPage } = await import(
 							"./quiz/quiz-selections-page"
