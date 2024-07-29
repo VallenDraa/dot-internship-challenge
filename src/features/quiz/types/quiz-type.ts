@@ -6,11 +6,11 @@ export type Quiz = {
 	category: string;
 	question: string;
 	correct_answer: string;
-	inccorect_answers: string[];
+	incorrect_answers: string[];
 };
 export type QuizWithoutCorrectAnswer = Omit<
 	Quiz,
-	"correct_answer" | "inccorect_answers"
+	"correct_answer" | "incorrect_answers"
 > & {
 	answers: string[];
 };

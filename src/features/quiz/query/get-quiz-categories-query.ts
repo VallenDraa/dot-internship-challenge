@@ -3,11 +3,12 @@ import { queryOptions, useQuery } from "@tanstack/react-query";
 import { type QueryConfig } from "@/lib/react-query";
 import { getQuizCategoriesApi } from "../api/get-quiz-categories-api";
 
-export const QUIZ_CATEGORY_QUERY = "quiz-categories";
+export const QUIZ_CATEGORY_QUERY_KEY = "quiz-categories";
 
 export const quizCategoriesOptions = () =>
 	queryOptions({
-		queryKey: [QUIZ_CATEGORY_QUERY],
+		refetchOnReconnect: false,
+		queryKey: [QUIZ_CATEGORY_QUERY_KEY],
 		queryFn: getQuizCategoriesApi,
 	});
 

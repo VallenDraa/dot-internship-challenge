@@ -7,7 +7,7 @@ import { cn } from "../../utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(
-	"rounded border-2 text-black border-black shadow-brutal-sm transition hover:shadow-brutal-base active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none hover:disabled:shadow-none active:disabled:shadow-none",
+	"rounded border-2 text-black text-center border-black shadow-brutal-sm transition hover:shadow-brutal-base active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none hover:disabled:shadow-none active:disabled:shadow-none",
 	{
 		variants: {
 			size: {
