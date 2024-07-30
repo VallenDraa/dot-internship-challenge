@@ -5,7 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import { Providers } from "./providers";
 import { createRouter } from "./routes";
 import { queryClient } from "@/lib/react-query";
-import { Toaster } from "sonner";
+import { Toaster } from "@/features/shared/components/ui/toaster";
 
 const AppRouter = () => {
 	const queryClient = useQueryClient();
@@ -20,7 +20,7 @@ export function App() {
 		<Providers queryClient={queryClient}>
 			<div className="min-h-screen bg-amber-300">
 				<div className="mx-auto max-w-screen-lg px-4 font-mono">
-					<Toaster closeButton richColors position="bottom-center" />
+					<Toaster />
 					<AppRouter />
 				</div>
 			</div>
