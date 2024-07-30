@@ -26,7 +26,7 @@ export const QuizCategorySelection = (props: QuizCategorySelectionProps) => {
 
 	return (
 		<>
-			{isLoading && <QuizCategorySelectionSkeleton />}
+			{(isLoading || !categories) && <QuizCategorySelectionSkeleton />}
 
 			<Transition show={!isLoading}>
 				<div

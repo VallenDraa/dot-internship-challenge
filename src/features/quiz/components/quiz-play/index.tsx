@@ -33,7 +33,7 @@ export const QuizPlay = (props: QuizPlayProps) => {
 			</Transition>
 
 			<Transition show={!isSessionFinished}>
-				{!quizzes && isFetching && <QuizPlaySkeleton />}
+				{(!quizzes || isFetching) && <QuizPlaySkeleton />}
 
 				<div className="flex flex-col items-center gap-4">
 					<span className="text-lg font-bold">{`Question ${activeQuizIdx + 1} / ${quizzes?.length}`}</span>
