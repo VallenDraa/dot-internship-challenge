@@ -19,7 +19,7 @@ export const useQuizSelectionHandler = () => {
 
 			return value;
 		},
-		1,
+		10,
 	);
 
 	const navigate = useNavigate();
