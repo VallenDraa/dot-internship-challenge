@@ -3,7 +3,7 @@ import { type Quiz } from "@/features/quiz/types/quiz-type";
 import { cn } from "@/features/shared/utils/cn";
 import { Chip } from "@/features/shared/components/ui/chip";
 import { Card } from "@/features/shared/components/ui/card";
-import { getDifficultyColor } from "@/features/quiz/utils/get-difficulty-color";
+import { getDifficultyColor } from "@/features/quiz/utils/get-color";
 
 export type ResultQuestionPreviewProps = {
 	quiz: Quiz;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { QuizCorrectPercentage } from "./quiz-correct-percentage";
+import { QuizScorePercentage } from "./quiz-score-percentage";
 import { type Quiz } from "@/features/quiz/types/quiz-type";
 import { buttonVariants } from "@/features/shared/components/ui/button";
 import { cn } from "@/features/shared/utils/cn";
@@ -51,7 +51,7 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 				/>
 			</div>
 
-			<QuizCorrectPercentage
+			<QuizScorePercentage
 				correctAnswers={correctAnswers}
 				correctPercentage={correctPercentage}
 				totalQuestions={quizzes.length}

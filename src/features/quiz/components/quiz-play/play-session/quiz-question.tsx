@@ -2,7 +2,7 @@ import { type Quiz } from "@/features/quiz/types/quiz-type";
 import { QuizTimer } from "./quiz-timer";
 import { Button } from "@/features/shared/components/ui/button";
 import { Chip } from "@/features/shared/components/ui/chip";
-import { getDifficultyColor } from "@/features/quiz/utils/get-difficulty-color";
+import { getDifficultyColor } from "@/features/quiz/utils/get-color";
 import { TransitionedCard } from "@/features/shared/components/ui/transitioned-card";
 
 export type QuizQuestionProps = {
