@@ -1,5 +1,4 @@
 import { type GetQuizzesApiOptions } from "@/features/quiz/api/get-quizzes-api";
-import { Transition } from "@headlessui/react";
 import { QuizSessionResult } from "./results/quiz-session-result";
 import { useQuizPlayHandler } from "@/features/quiz/hooks/use-quiz-play-handler";
 import { QuizQuestion } from "./play-session/quiz-question";
@@ -21,29 +20,29 @@ export const QuizPlay = (props: QuizPlayProps) => {
 		handleUserAnswerQuiz,
 	} = useQuizPlayHandler(props);
 
+	if (!isSessionFinished) {
+		return (
+			<QuizSessionResult quizzes={quizzes ?? []} userAnswers={userAnswers} />
+		);
+	}
+
 	return (
 		<>
-			<Transition as="div" appear show={isSessionFinished}>
-				<QuizSessionResult quizzes={quizzes ?? []} userAnswers={userAnswers} />
-			</Transition>
+			{(!quizzes || isFetching) && <QuizPlaySkeleton />}
 
-			<Transition show={!isSessionFinished} appear>
-				{(!quizzes || isFetching) && <QuizPlaySkeleton />}
+			<div className="flex flex-col items-center gap-4">
+				<span className="text-lg font-bold">{`Question ${activeQuizIdx + 1} / ${quizzes?.length}`}</span>
 
-				<div className="flex flex-col items-center gap-4">
-					<span className="text-lg font-bold">{`Question ${activeQuizIdx + 1} / ${quizzes?.length}`}</span>
-
-					{!isFetching && activeQuiz && (
-						<QuizQuestion
-							activeQuiz={activeQuiz}
-							activeQuizAnswers={activeQuizAnswers}
-							activeQuizIdx={activeQuizIdx}
-							handleTimesUp={handleTimesUp}
-							handleUserAnswerQuiz={handleUserAnswerQuiz}
-						/>
-					)}
-				</div>
-			</Transition>
+				{!isFetching && activeQuiz && (
+					<QuizQuestion
+						activeQuiz={activeQuiz}
+						activeQuizAnswers={activeQuizAnswers}
+						activeQuizIdx={activeQuizIdx}
+						handleTimesUp={handleTimesUp}
+						handleUserAnswerQuiz={handleUserAnswerQuiz}
+					/>
+				)}
+			</div>
 		</>
 	);
 };
