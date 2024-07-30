@@ -3,11 +3,11 @@ import {
 	Button as HeadlessButton,
 	type ButtonProps as HeadlessButtonProps,
 } from "@headlessui/react";
-import { cn } from "../../utils/cn";
+import { cn } from "@/features/shared/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const buttonVariants = cva(
-	"rounded border-2 text-black text-center border-black shadow-brutal-sm transition hover:shadow-brutal-base active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none hover:disabled:shadow-none active:disabled:shadow-none",
+	"rounded border-2 flex items-center justify-center gap-2 text-black text-center border-black shadow-brutal-sm transition hover:shadow-brutal-base active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none hover:disabled:shadow-none active:disabled:shadow-none",
 	{
 		variants: {
 			size: {
@@ -17,6 +17,8 @@ export const buttonVariants = cva(
 			},
 			variant: {
 				primary: "bg-emerald-300",
+				info: "bg-sky-300",
+				warning: "bg-amber-300",
 				danger: "bg-red-400",
 				link: "bg-transparent text-black p-0 hover:underline underline-offset-2 shadow-none border-0 hover:shadow-none active:shadow-none disabled:hover:no-underline",
 			},
