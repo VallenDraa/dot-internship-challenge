@@ -20,29 +20,31 @@ export const QuizPlay = (props: QuizPlayProps) => {
 		handleUserAnswerQuiz,
 	} = useQuizPlayHandler(props);
 
-	if (!isSessionFinished) {
-		return (
-			<QuizSessionResult quizzes={quizzes ?? []} userAnswers={userAnswers} />
-		);
-	}
-
 	return (
 		<>
-			{(!quizzes || isFetching) && <QuizPlaySkeleton />}
+			{isSessionFinished && (
+				<QuizSessionResult quizzes={quizzes ?? []} userAnswers={userAnswers} />
+			)}
 
-			<div className="flex flex-col items-center gap-4">
-				<span className="text-lg font-bold">{`Question ${activeQuizIdx + 1} / ${quizzes?.length}`}</span>
+			{!isSessionFinished && (
+				<>
+					{(!quizzes || isFetching) && <QuizPlaySkeleton />}
 
-				{!isFetching && activeQuiz && (
-					<QuizQuestion
-						activeQuiz={activeQuiz}
-						activeQuizAnswers={activeQuizAnswers}
-						activeQuizIdx={activeQuizIdx}
-						handleTimesUp={handleTimesUp}
-						handleUserAnswerQuiz={handleUserAnswerQuiz}
-					/>
-				)}
-			</div>
+					<div className="flex flex-col items-center gap-4">
+						<span className="text-lg font-bold">{`Question ${activeQuizIdx + 1} / ${quizzes?.length}`}</span>
+
+						{!isFetching && activeQuiz && (
+							<QuizQuestion
+								activeQuiz={activeQuiz}
+								activeQuizAnswers={activeQuizAnswers}
+								activeQuizIdx={activeQuizIdx}
+								handleTimesUp={handleTimesUp}
+								handleUserAnswerQuiz={handleUserAnswerQuiz}
+							/>
+						)}
+					</div>
+				</>
+			)}
 		</>
 	);
 };
