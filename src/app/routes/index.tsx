@@ -1,9 +1,7 @@
 import { type QueryClient } from "@tanstack/react-query";
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import { ProtectedRouteMiddleware } from "../middlewares/protected-route-middleware";
 import { quizSelectionsPageLoader } from "./quiz/quiz-selections-page";
 import { quizPlayPageLoader } from "./quiz/quiz-play-page";
-import { ResumeQuizMiddleware } from "../middlewares/resume-quiz-middleware";
 
 export const createRouter = (
 	queryClient: QueryClient,
@@ -11,13 +9,26 @@ export const createRouter = (
 	createBrowserRouter([
 		{
 			path: "",
-			element: (
-				<ProtectedRouteMiddleware>
-					<ResumeQuizMiddleware>
-						<Outlet />
-					</ResumeQuizMiddleware>
-				</ProtectedRouteMiddleware>
-			),
+			async lazy() {
+				const { ProtectedRouteMiddleware } = await import(
+					"../middlewares/protected-route-middleware"
+				);
+				const { ResumeQuizMiddleware } = await import(
+					"../middlewares/resume-quiz-middleware"
+				);
+				const { ErrorPage } = await import("./fallbacks/error-page");
+
+				return {
+					errorElement: <ErrorPage />,
+					element: (
+						<ProtectedRouteMiddleware>
+							<ResumeQuizMiddleware>
+								<Outlet />
+							</ResumeQuizMiddleware>
+						</ProtectedRouteMiddleware>
+					),
+				};
+			},
 			children: [
 				{
 					path: "/",
@@ -50,7 +61,7 @@ export const createRouter = (
 		{
 			path: "*",
 			async lazy() {
-				const { NotFoundPage } = await import("./not-found-page");
+				const { NotFoundPage } = await import("./fallbacks/not-found-page");
 				return { Component: NotFoundPage };
 			},
 		},

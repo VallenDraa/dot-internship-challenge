@@ -1,6 +1,5 @@
 import type React from "react";
 import { HeadingSubheading } from "../ui/heading-subheading";
-import { Card } from "../ui/card";
 import { LogoutButton } from "@/features/authentication/components/ui/logout-button";
 import {
 	UserProfile,
@@ -9,6 +8,7 @@ import {
 import { useLoggedInUser } from "@/features/authentication/query/get-logged-in-user-query";
 import { useAccessToken } from "@/features/authentication/query/get-access-token";
 import { Transition } from "@headlessui/react";
+import { TransitionedCard } from "../ui/transitioned-card";
 
 export type SelectionsLayoutProps = Readonly<{
 	children: React.ReactNode;
@@ -24,7 +24,7 @@ export const SelectionsLayout = (props: SelectionsLayoutProps) => {
 
 	return (
 		<main className="flex h-screen flex-col items-center justify-center">
-			<Card>
+			<TransitionedCard>
 				<div className="mb-8 flex justify-between gap-2">
 					<LogoutButton />
 
@@ -34,6 +34,7 @@ export const SelectionsLayout = (props: SelectionsLayoutProps) => {
 						<Transition
 							show
 							as="div"
+							appear
 							enter="transition duration-200 ease-in-out"
 							enterFrom="opacity-0"
 							enterTo="opacity-100"
@@ -54,7 +55,7 @@ export const SelectionsLayout = (props: SelectionsLayoutProps) => {
 				</div>
 
 				{props.children}
-			</Card>
+			</TransitionedCard>
 		</main>
 	);
 };

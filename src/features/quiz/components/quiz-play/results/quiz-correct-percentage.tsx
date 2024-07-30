@@ -1,27 +1,23 @@
 import { cn } from "@/features/shared/utils/cn";
-import { Transition } from "@headlessui/react";
+import { Transition, TransitionChild } from "@headlessui/react";
 
 export type QuizCorrectPercentageProps = {
 	totalQuestions: number;
 	correctAnswers: number;
 	correctPercentage: number;
-	animate?: boolean;
 };
 export const QuizCorrectPercentage = (props: QuizCorrectPercentageProps) => {
-	const {
-		animate = true,
-		totalQuestions,
-		correctAnswers,
-		correctPercentage,
-	} = props;
+	const { totalQuestions, correctAnswers, correctPercentage } = props;
 
 	return (
 		<Transition
 			as="div"
-			show={animate}
+			appear
+			show
 			className="relative size-56 rounded-full border-2 border-black"
 		>
-			<div
+			<TransitionChild
+				as="div"
 				className={cn("size-full rounded-full", {
 					"bg-emerald-300": correctPercentage >= 0.6,
 					"bg-amber-300": correctPercentage > 0.4 && correctPercentage < 0.6,

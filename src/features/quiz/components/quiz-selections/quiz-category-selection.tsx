@@ -28,7 +28,7 @@ export const QuizCategorySelection = (props: QuizCategorySelectionProps) => {
 		<>
 			{(isLoading || !categories) && <QuizCategorySelectionSkeleton />}
 
-			<Transition show={!isLoading}>
+			<Transition appear show={!isLoading}>
 				<div
 					className={cn(
 						"data-[closed]:opacity-0",

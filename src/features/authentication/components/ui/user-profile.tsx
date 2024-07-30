@@ -7,8 +7,8 @@ export type UserProfileProps = {
 
 export const UserProfileSkeleton = () => (
 	<div className="flex animate-pulse items-center gap-2">
-		<div className="h-4 w-16 rounded bg-gray-100" />
-		<div className="size-10 rounded-full bg-gray-100" />
+		<div className="h-4 w-16 rounded bg-neutral-100" />
+		<div className="size-10 rounded-full bg-neutral-100" />
 	</div>
 );
 

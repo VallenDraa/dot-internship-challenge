@@ -7,7 +7,7 @@ import { cn } from "@/features/shared/utils/cn";
 import { ResultQuestionPreviewList } from "./result-question-preview-list";
 import { ResultQuestionPreview } from "./result-question-preview";
 import { HeadingSubheading } from "@/features/shared/components/ui/heading-subheading";
-import { Card } from "@/features/shared/components/ui/card";
+import { TransitionedCard } from "@/features/shared/components/ui/transitioned-card";
 
 export type QuizSessionResultProps = {
 	userAnswers: string[];
@@ -42,7 +42,7 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 	}, [correctPercentage]);
 
 	return (
-		<Card className="flex h-min flex-col items-center gap-8">
+		<TransitionedCard className="flex h-min flex-col items-center gap-8">
 			<div className="text-center">
 				<HeadingSubheading
 					heading="🏆️ Quiz Results"
@@ -76,6 +76,6 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 			>
 				Back to selection
 			</Link>
-		</Card>
+		</TransitionedCard>
 	);
 };

@@ -1,0 +1,112 @@
+@keyframes morph-to-circle-1 {
+	0% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	50% {
+		transform: rotate(40deg);
+		border-radius: 0%;
+	}
+	95% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	100% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+}
+
+@keyframes morph-to-circle-2 {
+	0% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	50% {
+		transform: rotate(120deg);
+		border-radius: 0%;
+	}
+	95% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	100% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+}
+
+@keyframes morph-to-circle-3 {
+	0% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	50% {
+		transform: rotate(200deg);
+		border-radius: 0%;
+	}
+	95% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	100% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+}
+@keyframes morph-to-circle-4 {
+	0% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	50% {
+		transform: rotate(280deg);
+		border-radius: 0%;
+	}
+	95% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	100% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+}
+
+@keyframes morph-to-circle-5 {
+	0% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	50% {
+		transform: rotate(360deg);
+		border-radius: 0%;
+	}
+	95% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	100% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+}
+
+@keyframes morph-to-circle-6 {
+	0% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	50% {
+		transform: rotate(4deg);
+		border-radius: 0%;
+	}
+	95% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+	100% {
+		transform: rotate(0);
+		border-radius: 50%;
+	}
+}

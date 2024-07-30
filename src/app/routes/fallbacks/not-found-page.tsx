@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const NotFoundPage = () => (
 	<FormLayout
-		title="😵‍💫 404"
+		title="😵‍💫 404 Not Found"
 		subtitle="Oops, Looks like the page you're trying to access is not missing!"
 	>
 		<Link to="/" className={buttonVariants()}>

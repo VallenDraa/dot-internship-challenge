@@ -74,7 +74,13 @@ module.exports = {
 			"error",
 			{
 				selector: "variableLike",
-				format: ["camelCase", "PascalCase", "UPPER_CASE", "snake_case"],
+				format: [
+					"camelCase",
+					"PascalCase",
+					"UPPER_CASE",
+					"snake_case",
+					"_unused",
+				],
 			},
 		],
 		"react-refresh/only-export-components": [

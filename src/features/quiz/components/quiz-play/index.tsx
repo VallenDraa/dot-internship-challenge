@@ -23,16 +23,11 @@ export const QuizPlay = (props: QuizPlayProps) => {
 
 	return (
 		<>
-			<Transition show={isSessionFinished}>
-				<div>
-					<QuizSessionResult
-						quizzes={quizzes ?? []}
-						userAnswers={userAnswers}
-					/>
-				</div>
+			<Transition as="div" appear show={isSessionFinished}>
+				<QuizSessionResult quizzes={quizzes ?? []} userAnswers={userAnswers} />
 			</Transition>
 
-			<Transition show={!isSessionFinished}>
+			<Transition show={!isSessionFinished} appear>
 				{(!quizzes || isFetching) && <QuizPlaySkeleton />}
 
 				<div className="flex flex-col items-center gap-4">

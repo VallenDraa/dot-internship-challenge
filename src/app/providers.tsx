@@ -1,7 +1,8 @@
 import { env } from "@/config/env";
+import { MainLoadingFallback } from "@/app/routes/fallbacks/loading-page";
 import { type QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import type * as React from "react";
+import * as React from "react";
 
 export type ProvidersProps = Readonly<{
 	queryClient: QueryClient;
@@ -9,8 +10,10 @@ export type ProvidersProps = Readonly<{
 }>;
 
 export const Providers = (props: ProvidersProps) => (
-	<QueryClientProvider client={props.queryClient}>
-		{env.dev && <ReactQueryDevtools />}
-		{props.children}
-	</QueryClientProvider>
+	<React.Suspense fallback={<MainLoadingFallback />}>
+		<QueryClientProvider client={props.queryClient}>
+			{env.dev && <ReactQueryDevtools />}
+			{props.children}
+		</QueryClientProvider>
+	</React.Suspense>
 );
