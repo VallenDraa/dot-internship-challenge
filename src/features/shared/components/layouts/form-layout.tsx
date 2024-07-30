@@ -1,5 +1,6 @@
 import type React from "react";
 import { HeadingSubheading } from "../ui/heading-subheading";
+import { Card } from "../ui/card";
 
 export type FormLayoutProps = Readonly<{
 	children: React.ReactNode;
@@ -9,12 +10,12 @@ export type FormLayoutProps = Readonly<{
 
 export const FormLayout = (props: FormLayoutProps) => (
 	<main className="flex h-screen flex-col items-center justify-center">
-		<div className="max-w-xl rounded border-2 border-black bg-white p-10 shadow-brutal-lg">
+		<Card>
 			<div className="mb-8 space-y-2 text-center">
 				<HeadingSubheading heading={props.title} subHeading={props.subtitle} />
 			</div>
 
 			{props.children}
-		</div>
+		</Card>
 	</main>
 );

@@ -1,5 +1,5 @@
 import { Input } from "@/features/shared/components/ui/input";
-import { useHandleLogin } from "../../hooks/use-handle-login";
+import { useHandleLogin } from "@/features/authentication/hooks/use-handle-login";
 import { Button } from "@/features/shared/components/ui/button";
 
 export type LoginFormProps = {
