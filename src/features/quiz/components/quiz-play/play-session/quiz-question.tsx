@@ -24,7 +24,7 @@ export const QuizQuestion = (props: QuizQuestionProps) => {
 
 	return (
 		<TransitionedCard className="flex h-min flex-col items-center gap-6">
-			<div className="flex w-full justify-between">
+			<div className="flex w-full flex-wrap justify-between gap-2">
 				<Chip
 					variant="info"
 					dangerouslySetInnerHTML={{ __html: activeQuiz.category }}

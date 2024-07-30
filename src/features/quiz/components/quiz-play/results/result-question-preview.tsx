@@ -19,7 +19,7 @@ export const ResultQuestionPreview = (props: ResultQuestionPreviewProps) => {
 			className="flex w-96 flex-shrink-0 snap-center flex-col justify-between gap-4 p-4"
 		>
 			<div>
-				<div className="flex w-full justify-between">
+				<div className="flex w-full flex-wrap justify-between gap-2">
 					<Chip
 						variant="info"
 						dangerouslySetInnerHTML={{ __html: quiz.category }}
