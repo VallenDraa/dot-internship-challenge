@@ -1,22 +1,35 @@
 import { Button } from "@/features/shared/components/ui/button";
-import { type Quiz } from "../../types/quiz-type";
+import { type Quiz } from "@/features/quiz/types/quiz-type";
 import { cn } from "@/features/shared/utils/cn";
+import { Chip } from "@/features/shared/components/ui/chip";
+import { Card } from "@/features/shared/components/ui/card";
+import { getDifficultyColor } from "@/features/quiz/utils/get-difficulty-color";
 
-export type QuestionPreviewProps = {
+export type ResultQuestionPreviewProps = {
 	quiz: Quiz;
 	userAnswer: string;
 };
 
-export const QuestionPreview = (props: QuestionPreviewProps) => {
+export const ResultQuestionPreview = (props: ResultQuestionPreviewProps) => {
 	const { quiz, userAnswer } = props;
 
 	return (
-		<li className="flex w-96 flex-shrink-0 snap-center flex-col justify-between gap-4 rounded border-2 border-black bg-white p-4 shadow-brutal-base">
+		<Card
+			as="li"
+			className="flex w-96 flex-shrink-0 snap-center flex-col justify-between gap-4 p-4"
+		>
 			<div>
-				<span
-					className="rounded-full border-2 border-black bg-amber-300 px-2 py-1 text-xs text-black"
-					dangerouslySetInnerHTML={{ __html: quiz.category }}
-				/>
+				<div className="flex w-full justify-between">
+					<Chip
+						variant="info"
+						dangerouslySetInnerHTML={{ __html: quiz.category }}
+					/>
+
+					<Chip
+						variant={getDifficultyColor(quiz.difficulty)}
+						dangerouslySetInnerHTML={{ __html: quiz.difficulty }}
+					/>
+				</div>
 
 				<h4
 					className="mt-8 text-center text-lg font-bold"
@@ -32,7 +45,7 @@ export const QuestionPreview = (props: QuestionPreviewProps) => {
 						variant="primary"
 						dangerouslySetInnerHTML={{ __html: quiz.correct_answer }}
 						className={cn({
-							"font-bold shadow-brutal-lg disabled:opacity-100":
+							"font-bold shadow-brutal-base disabled:opacity-100":
 								userAnswer === quiz.correct_answer,
 						})}
 					/>
@@ -56,6 +69,6 @@ export const QuestionPreview = (props: QuestionPreviewProps) => {
 					{userAnswer ? `You Answered: ${userAnswer}` : "You didn't answer"}
 				</p>
 			</div>
-		</li>
+		</Card>
 	);
 };

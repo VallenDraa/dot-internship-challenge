@@ -4,9 +4,10 @@ import { QuizCorrectPercentage } from "./quiz-correct-percentage";
 import { type Quiz } from "@/features/quiz/types/quiz-type";
 import { buttonVariants } from "@/features/shared/components/ui/button";
 import { cn } from "@/features/shared/utils/cn";
-import { QuestionPreviewList } from "./question-preview-list";
-import { QuestionPreview } from "./question-preview";
+import { ResultQuestionPreviewList } from "./result-question-preview-list";
+import { ResultQuestionPreview } from "./result-question-preview";
 import { HeadingSubheading } from "@/features/shared/components/ui/heading-subheading";
+import { Card } from "@/features/shared/components/ui/card";
 
 export type QuizSessionResultProps = {
 	userAnswers: string[];
@@ -41,7 +42,7 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 	}, [correctPercentage]);
 
 	return (
-		<div className="flex flex-col items-center gap-8">
+		<Card className="flex h-min flex-col items-center gap-8">
 			<div className="text-center">
 				<HeadingSubheading
 					heading="🏆️ Quiz Results"
@@ -58,15 +59,15 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 
 			<div className="w-full">
 				<h2 className="font-bold">Your Answers: </h2>
-				<QuestionPreviewList>
+				<ResultQuestionPreviewList>
 					{quizzes.map((quiz, idx) => (
-						<QuestionPreview
+						<ResultQuestionPreview
 							key={idx}
 							quiz={quiz}
 							userAnswer={userAnswers[idx]}
 						/>
 					))}
-				</QuestionPreviewList>
+				</ResultQuestionPreviewList>
 			</div>
 
 			<Link
@@ -75,6 +76,6 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 			>
 				Back to selection
 			</Link>
-		</div>
+		</Card>
 	);
 };

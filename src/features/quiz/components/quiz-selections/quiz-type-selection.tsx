@@ -1,6 +1,6 @@
 import React from "react";
 import { Combobox } from "@/features/shared/components/ui/combobox";
-import { type QuizType } from "../../types/quiz-type";
+import { type QuizType } from "@/features/quiz/types/quiz-type";
 import { CheckIcon } from "@heroicons/react/20/solid";
 
 export type QuizTypeSelectionProps = {

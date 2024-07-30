@@ -4,6 +4,7 @@ import { QuizDifficultySelection } from "./quiz-difficulty-selection";
 import { QuizTypeSelection } from "./quiz-type-selection";
 import { Button } from "@/features/shared/components/ui/button";
 import { useQuizSelectionHandler } from "@/features/quiz/hooks/use-quiz-selection-handler";
+import { PlayIcon } from "@heroicons/react/20/solid";
 
 export const QuizSelections = () => {
 	const {
@@ -55,6 +56,7 @@ export const QuizSelections = () => {
 				onClick={startQuizSession}
 				className="mt-8 w-full"
 			>
+				<PlayIcon className="size-5" />
 				Start Quiz
 			</Button>
 		</div>
