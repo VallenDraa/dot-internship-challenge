@@ -16,9 +16,9 @@ export type QuizWithoutCorrectAnswer = Omit<
 };
 
 export type QuizProgress = {
-	currentQuestionId: number;
-	questionsIds: number[];
-	answers: { questionId: number; chosenAnswer: string };
+	quizzes: Quiz[];
+	currentIndex: number;
+	userAnswers: string[];
 };
 
 export type Category = {

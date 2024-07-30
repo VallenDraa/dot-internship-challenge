@@ -1,19 +1,25 @@
 import { type QuizProgress } from "../types/quiz-type";
 
 export const QUIZ_SESSION_KEY = "quiz-session";
+
 export const getQuizSessionProgress = () => {
 	const progressJson = localStorage.getItem(QUIZ_SESSION_KEY);
 	if (!progressJson) {
 		return null;
 	}
 
-	return JSON.parse(progressJson) as QuizProgress;
+	const base64DecodedProgress = window.atob(progressJson);
+	const progress = JSON.parse(base64DecodedProgress) as QuizProgress;
+
+	return progress;
 };
 
 export const saveQuizSessionProgress = (progress: QuizProgress) => {
 	const progressJson = JSON.stringify(progress);
 
-	localStorage.setItem(QUIZ_SESSION_KEY, progressJson);
+	const base64EncodedProgress = window.btoa(progressJson);
+
+	localStorage.setItem(QUIZ_SESSION_KEY, base64EncodedProgress);
 };
 
 export const clearQuizSessionProgress = () => {

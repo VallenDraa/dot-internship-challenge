@@ -30,7 +30,7 @@ export const QuizCorrectPercentage = (props: QuizCorrectPercentageProps) => {
 			/>
 
 			<div className="absolute inset-3 z-10 flex flex-col items-center justify-center rounded-full bg-white">
-				<p className="text-3xl font-bold">{`${correctPercentage * 100}%`}</p>
+				<p className="text-3xl font-bold">{`${(correctPercentage * 100).toFixed(2)} %`}</p>
 				<p className="font-medium">{`Answers: ${correctAnswers} / ${totalQuestions}`}</p>
 			</div>
 		</Transition>

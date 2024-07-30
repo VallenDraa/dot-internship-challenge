@@ -1,8 +1,9 @@
 import { type QueryClient } from "@tanstack/react-query";
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import { ProtectedRoute } from "./protected-route";
+import { ProtectedRouteMiddleware } from "../middlewares/protected-route-middleware";
 import { quizSelectionsPageLoader } from "./quiz/quiz-selections-page";
 import { quizPlayPageLoader } from "./quiz/quiz-play-page";
+import { ResumeQuizMiddleware } from "../middlewares/resume-quiz-middleware";
 
 export const createRouter = (
 	queryClient: QueryClient,
@@ -11,9 +12,11 @@ export const createRouter = (
 		{
 			path: "",
 			element: (
-				<ProtectedRoute>
-					<Outlet />
-				</ProtectedRoute>
+				<ProtectedRouteMiddleware>
+					<ResumeQuizMiddleware>
+						<Outlet />
+					</ResumeQuizMiddleware>
+				</ProtectedRouteMiddleware>
 			),
 			children: [
 				{
