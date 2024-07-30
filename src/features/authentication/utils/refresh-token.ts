@@ -4,3 +4,7 @@ export const getRefreshToken = () => localStorage.getItem(REFRESH_TOKEN);
 export const setRefreshToken = (token: string) => {
 	localStorage.setItem(REFRESH_TOKEN, token);
 };
+
+export const clearRefreshToken = () => {
+	localStorage.removeItem(REFRESH_TOKEN);
+};
