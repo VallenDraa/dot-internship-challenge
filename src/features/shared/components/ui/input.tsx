@@ -6,7 +6,7 @@ import {
 	Label,
 	type InputProps as HeadlessInputProps,
 } from "@headlessui/react";
-import { cn } from "../../utils/cn";
+import { cn } from "@/features/shared/utils/cn";
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const inputVariants = cva(

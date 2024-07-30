@@ -12,7 +12,7 @@ import {
 	Label,
 } from "@headlessui/react";
 
-import { cn } from "../../utils/cn";
+import { cn } from "@/features/shared/utils/cn";
 import { type ElementType } from "react";
 import { inputVariants } from "./input";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";

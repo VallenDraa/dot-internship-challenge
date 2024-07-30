@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "../../utils/cn";
+import { cn } from "@/features/shared/utils/cn";
 
 export type HeadingSubheadingProps = {
 	heading: React.ReactNode;
