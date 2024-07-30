@@ -2,7 +2,7 @@
 import { QuizSelections } from "@/features/quiz/components/quiz-selections";
 import { quizCategoriesOptions } from "@/features/quiz/query/get-quiz-categories-query";
 import { quizzesOptions } from "@/features/quiz/query/get-quizzes-api-query";
-import { FormLayout } from "@/features/shared/components/layouts/form-layout";
+import { SelectionsLayout } from "@/features/shared/components/layouts/selections-layout";
 import { type QueryClient } from "@tanstack/react-query";
 
 export const quizSelectionsPageLoader =
@@ -21,10 +21,10 @@ export const quizSelectionsPageLoader =
 	};
 
 export const QuizSelectionsPage = () => (
-	<FormLayout
+	<SelectionsLayout
 		title="🎉 Welcome to Triquest!"
 		subtitle="Select your quiz preferences to start the game!"
 	>
 		<QuizSelections />
-	</FormLayout>
+	</SelectionsLayout>
 );

@@ -20,7 +20,7 @@ export const buttonVariants = cva(
 				info: "bg-sky-300",
 				warning: "bg-amber-300",
 				danger: "bg-red-400",
-				link: "bg-transparent text-black p-0 hover:underline underline-offset-2 shadow-none border-0 hover:shadow-none active:shadow-none disabled:hover:no-underline",
+				link: "bg-transparent text-black p-0 hover:underline underline-offset-2 shadow-none border-none hover:shadow-none active:shadow-none disabled:hover:no-underline",
 			},
 		},
 		defaultVariants: {

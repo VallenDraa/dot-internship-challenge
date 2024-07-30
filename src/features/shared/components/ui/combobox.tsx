@@ -61,10 +61,11 @@ const ComboboxInput = (props: ComboboxInputProps) => {
 };
 
 const ComboboxButton = (props: ComboboxButtonProps) => {
-	const { children, className } = props;
+	const { children, className, ...rest } = props;
 
 	return (
 		<HeadlessComboboxButton
+			{...rest}
 			className={cn(
 				buttonVariants({ size: "small", variant: "primary" }),
 				"group absolute bottom-2 right-0.5 flex size-7 items-center justify-center",
@@ -102,7 +103,7 @@ const ComboboxOption = (props: ComboboxOptionProps) => {
 		<HeadlessComboboxOption
 			{...rest}
 			className={cn(
-				"group flex cursor-pointer select-none items-center gap-2 p-2 font-semibold text-black transition data-[focus]:bg-neutral-200",
+				"group flex cursor-pointer select-none items-center gap-2 p-2 font-mono font-semibold text-black transition data-[focus]:bg-neutral-200",
 				className,
 			)}
 		>
