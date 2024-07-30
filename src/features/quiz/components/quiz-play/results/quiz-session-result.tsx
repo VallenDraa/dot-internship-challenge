@@ -1,13 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { QuizScorePercentage } from "./quiz-score-percentage";
 import { type Quiz } from "@/features/quiz/types/quiz-type";
-import { buttonVariants } from "@/features/shared/components/ui/button";
-import { cn } from "@/features/shared/utils/cn";
+import { Button } from "@/features/shared/components/ui/button";
 import { ResultQuestionPreviewList } from "./result-question-preview-list";
 import { ResultQuestionPreview } from "./result-question-preview";
 import { HeadingSubheading } from "@/features/shared/components/ui/heading-subheading";
 import { TransitionedCard } from "@/features/shared/components/ui/transitioned-card";
+import { clearQuizSessionProgress } from "@/features/quiz/utils/save-quiz-session-progress";
 
 export type QuizSessionResultProps = {
 	userAnswers: string[];
@@ -16,6 +16,8 @@ export type QuizSessionResultProps = {
 
 export const QuizSessionResult = (props: QuizSessionResultProps) => {
 	const { quizzes, userAnswers } = props;
+
+	const navigate = useNavigate();
 
 	const correctAnswers = React.useMemo(
 		() =>
@@ -40,6 +42,11 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 
 		return "Yikes, it could've been better!";
 	}, [correctPercentage]);
+
+	const endQuizSession = () => {
+		clearQuizSessionProgress();
+		navigate("/");
+	};
 
 	return (
 		<TransitionedCard className="flex h-min flex-col items-center gap-8">
@@ -70,12 +77,9 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 				</ResultQuestionPreviewList>
 			</div>
 
-			<Link
-				to="/"
-				className={cn("block w-full", buttonVariants({ variant: "danger" }))}
-			>
+			<Button variant="danger" className="w-full" onClick={endQuizSession}>
 				Back to selection
-			</Link>
+			</Button>
 		</TransitionedCard>
 	);
 };
