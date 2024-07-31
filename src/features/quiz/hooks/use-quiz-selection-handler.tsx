@@ -26,7 +26,7 @@ export const useQuizSelectionHandler = () => {
 	const [isQuizStarting, setIsQuizStarting] = React.useState(false);
 	const startQuizSession = React.useCallback(() => {
 		const params: Record<string, string> = {
-			amount: amount.toString(),
+			amount: isNaN(amount) ? "1" : amount.toString(),
 		};
 
 		setIsQuizStarting(true);
