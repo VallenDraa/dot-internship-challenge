@@ -6,6 +6,8 @@ import {
 	getQuizSessionProgress,
 	saveQuizSessionProgress,
 } from "../utils/save-quiz-session-progress";
+import { toast } from "sonner";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const useQuizPlayHandler = (options: GetQuizzesApiOptions) => {
 	const savedProgress = React.useRef(getQuizSessionProgress());
@@ -83,6 +85,18 @@ export const useQuizPlayHandler = (options: GetQuizzesApiOptions) => {
 			clearQuizSessionProgress();
 		}
 	}, [isSessionFinished]);
+
+	// Handle when quizzes that are
+	// fetched from openTDB is empty
+	const navigate = useNavigate();
+	const location = useLocation();
+	React.useEffect(() => {
+		if (quizzes?.length === 0 && location.pathname === "/play") {
+			clearQuizSessionProgress();
+			toast.info("It seems that no quizzes are found, with your selections!");
+			navigate("/");
+		}
+	}, [quizzes?.length, navigate]);
 
 	return {
 		isSessionFinished,
