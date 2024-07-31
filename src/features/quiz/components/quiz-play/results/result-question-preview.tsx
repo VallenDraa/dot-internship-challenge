@@ -65,9 +65,14 @@ export const ResultQuestionPreview = (props: ResultQuestionPreviewProps) => {
 					))}
 				</div>
 
-				<p className="mt-6 text-sm italic text-neutral-700">
-					{userAnswer ? `You Answered: ${userAnswer}` : "You didn't answer"}
-				</p>
+				<p
+					className="mt-6 text-sm italic text-neutral-700"
+					dangerouslySetInnerHTML={{
+						__html: userAnswer
+							? `You Answered: ${userAnswer}`
+							: "You didn't answer",
+					}}
+				/>
 			</div>
 		</Card>
 	);
