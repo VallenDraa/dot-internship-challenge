@@ -96,7 +96,7 @@ export const useQuizPlayHandler = (options: GetQuizzesApiOptions) => {
 			toast.info("It seems that no quizzes are found, with your selections!");
 			navigate("/");
 		}
-	}, [quizzes?.length, navigate]);
+	}, [quizzes?.length, navigate, location.pathname]);
 
 	return {
 		isSessionFinished,

@@ -16,7 +16,9 @@ export const ErrorPage = () => {
 			<pre className="mb-4 text-wrap rounded border-2 border-black p-2">{`Error Message: ${errorMessage}`}</pre>
 			<Button
 				className="w-full"
-				onClick={() => window.location.assign(window.location.origin)}
+				onClick={() => {
+					window.location.assign(window.location.origin);
+				}}
 			>
 				<ArrowPathIcon className="size-5" />
 				Refresh Page
