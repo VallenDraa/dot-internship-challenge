@@ -10,4 +10,9 @@ A dot intenship challenge test project made using React and Typescript that foll
 - React Query
 - Axios
 
+## Services Used
+- [OpenTDB](https://opentdb.com/)
+- [Auth - DummyJSON](https://dummyjson.com/docs/auth)
+
+
 [Video Presentation](https://www.loom.com/share/2e949f2cbda34ec7843ddcc75b995810?sid=b6cdae25-913e-4502-9a9f-a355ff428376)
