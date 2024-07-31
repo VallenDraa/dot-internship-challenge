@@ -75,6 +75,7 @@ module.exports = {
 			{
 				selector: "variableLike",
 				format: ["camelCase", "PascalCase", "UPPER_CASE", "snake_case"],
+				leadingUnderscore: "allow",
 			},
 		],
 		"react-refresh/only-export-components": [
