@@ -1,7 +1,5 @@
 import { type QueryClient } from "@tanstack/react-query";
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import { quizSelectionsPageLoader } from "./quiz/quiz-selections-page";
-import { quizPlayPageLoader } from "./quiz/quiz-play-page";
 
 export const createRouter = (
 	queryClient: QueryClient,
@@ -32,20 +30,25 @@ export const createRouter = (
 			children: [
 				{
 					path: "/",
-					loader: quizSelectionsPageLoader(queryClient),
 					async lazy() {
-						const { QuizSelectionsPage } = await import(
-							"./quiz/quiz-selections-page"
-						);
-						return { Component: QuizSelectionsPage };
+						const { QuizSelectionsPage, quizSelectionsPageLoader } =
+							await import("./quiz/quiz-selections-page");
+						return {
+							Component: QuizSelectionsPage,
+							loader: quizSelectionsPageLoader(queryClient),
+						};
 					},
 				},
 				{
 					path: "/play",
-					loader: quizPlayPageLoader(queryClient),
 					async lazy() {
-						const { QuizPlayPage } = await import("./quiz/quiz-play-page");
-						return { Component: QuizPlayPage };
+						const { QuizPlayPage, quizPlayPageLoader } = await import(
+							"./quiz/quiz-play-page"
+						);
+						return {
+							Component: QuizPlayPage,
+							loader: quizPlayPageLoader(queryClient),
+						};
 					},
 				},
 			],
