@@ -3,13 +3,15 @@ import { Transition } from "@headlessui/react";
 import React from "react";
 
 export type QuizScorePercentageProps = {
+	totalAnswered: number;
 	totalQuestions: number;
 	correctAnswers: number;
 	correctPercentage: number;
 };
 
 export const QuizScorePercentage = (props: QuizScorePercentageProps) => {
-	const { totalQuestions, correctAnswers, correctPercentage } = props;
+	const { totalAnswered, totalQuestions, correctAnswers, correctPercentage } =
+		props;
 
 	const percentage = correctPercentage * 100;
 	const [transitionPercentage, setTransitionPercentage] = React.useState(0);
@@ -43,6 +45,7 @@ export const QuizScorePercentage = (props: QuizScorePercentageProps) => {
 			<div className="absolute inset-3 z-10 flex flex-col items-center justify-center rounded-full border border-black bg-white">
 				<p className="text-3xl font-bold">{`${transitionPercentage.toFixed(2)} %`}</p>
 				<p className="font-medium">{`Correct: ${correctAnswers} / ${totalQuestions}`}</p>
+				<p className="text-sm text-neutral-700">{`${totalAnswered} Answered`}</p>
 			</div>
 		</Transition>
 	);

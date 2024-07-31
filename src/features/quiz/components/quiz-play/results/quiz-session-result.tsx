@@ -59,6 +59,7 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 			</div>
 
 			<QuizScorePercentage
+				totalAnswered={userAnswers.length}
 				correctAnswers={correctAnswers}
 				correctPercentage={correctPercentage}
 				totalQuestions={quizzes.length}
