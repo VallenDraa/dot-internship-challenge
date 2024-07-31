@@ -1,6 +1,6 @@
 import "./loading-spinner.css";
 
-export const LoadingSpinner = () => {
+export const LoadingSpinner = () => (
 	<div className="relative grid size-24 content-center">
 		{new Array(6).fill(0).map((_item, index) => (
 			<div
@@ -11,5 +11,5 @@ export const LoadingSpinner = () => {
 				}}
 			/>
 		))}
-	</div>;
-};
+	</div>
+);
