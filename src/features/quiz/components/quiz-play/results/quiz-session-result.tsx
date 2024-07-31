@@ -1,13 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { QuizScorePercentage } from "./quiz-score-percentage";
 import { type Quiz } from "@/features/quiz/types/quiz-type";
-import { Button } from "@/features/shared/components/ui/button";
+import { buttonVariants } from "@/features/shared/components/ui/button";
 import { ResultQuestionPreviewList } from "./result-question-preview-list";
 import { ResultQuestionPreview } from "./result-question-preview";
 import { HeadingSubheading } from "@/features/shared/components/ui/heading-subheading";
 import { TransitionedCard } from "@/features/shared/components/ui/transitioned-card";
-import { clearQuizSessionProgress } from "@/features/quiz/utils/save-quiz-session-progress";
+import { cn } from "@/features/shared/utils/cn";
 
 export type QuizSessionResultProps = {
 	userAnswers: string[];
@@ -17,7 +17,7 @@ export type QuizSessionResultProps = {
 export const QuizSessionResult = (props: QuizSessionResultProps) => {
 	const { quizzes, userAnswers } = props;
 
-	const navigate = useNavigate();
+	const [isExitingResult, setIsExitingResult] = React.useState(false);
 
 	const correctAnswers = React.useMemo(
 		() =>
@@ -43,13 +43,9 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 		return "Yikes, it could've been better!";
 	}, [correctPercentage]);
 
-	const endQuizSession = () => {
-		clearQuizSessionProgress();
-		navigate("/");
-	};
-
 	return (
 		<TransitionedCard
+			show={!isExitingResult}
 			wrapperClassName="w-full sm:w-auto"
 			className="flex h-min flex-col items-center gap-8"
 		>
@@ -81,9 +77,15 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 				</ResultQuestionPreviewList>
 			</div>
 
-			<Button variant="danger" className="w-full" onClick={endQuizSession}>
+			<Link
+				to="/"
+				onClick={() => {
+					setIsExitingResult(true);
+				}}
+				className={cn(buttonVariants(), "w-full")}
+			>
 				Back to selection
-			</Button>
+			</Link>
 		</TransitionedCard>
 	);
 };

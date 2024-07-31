@@ -2,15 +2,16 @@ import { Card, type CardProps } from "./card";
 import { Transition } from "@headlessui/react";
 
 export type TransitionedCardProps = CardProps & {
+	show?: boolean;
 	wrapperClassName?: string;
 };
 
 export const TransitionedCard = (props: TransitionedCardProps) => {
-	const { children, wrapperClassName, ...rest } = props;
+	const { show, children, wrapperClassName, ...rest } = props;
 	return (
 		<Transition
 			as="div"
-			show
+			show={show ?? true}
 			appear
 			className={wrapperClassName}
 			enter="transition duration-300 ease-in-out"

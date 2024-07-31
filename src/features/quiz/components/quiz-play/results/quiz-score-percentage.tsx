@@ -18,15 +18,15 @@ export const QuizScorePercentage = (props: QuizScorePercentageProps) => {
 
 	React.useEffect(() => {
 		const interval = setInterval(() => {
-			setTransitionPercentage(prev => {
-				return prev >= percentage ? percentage : prev + 1.42;
-			});
+			setTransitionPercentage(prev =>
+				prev >= percentage ? percentage : prev + 1.42,
+			);
 		}, 10);
 
 		return () => {
 			clearInterval(interval);
 		};
-	}, [transitionPercentage]);
+	}, [transitionPercentage, percentage]);
 
 	return (
 		<Transition
