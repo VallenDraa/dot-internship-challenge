@@ -8,6 +8,7 @@ import { ResultQuestionPreview } from "./result-question-preview";
 import { HeadingSubheading } from "@/features/shared/components/ui/heading-subheading";
 import { TransitionedCard } from "@/features/shared/components/ui/transitioned-card";
 import { cn } from "@/features/shared/utils/cn";
+import { ArrowLeftIcon } from "@heroicons/react/20/solid";
 
 export type QuizSessionResultProps = {
 	userAnswers: string[];
@@ -84,6 +85,7 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 				}}
 				className={cn(buttonVariants(), "w-full")}
 			>
+				<ArrowLeftIcon className="size-5" />
 				Back to selection
 			</Link>
 		</TransitionedCard>
