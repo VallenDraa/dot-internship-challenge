@@ -32,11 +32,11 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 	const correctPercentage = correctAnswers / quizzes.length;
 
 	const quizResultMessage = React.useMemo(() => {
-		if (correctPercentage > 0.6) {
+		if (correctPercentage >= 0.6) {
 			return "Hey, turns out you did good after all!";
 		}
 
-		if (correctPercentage > 0.4 && correctPercentage < 0.6) {
+		if (correctPercentage >= 0.4 && correctPercentage < 0.6) {
 			return "Yeah, you're all right!";
 		}
 
