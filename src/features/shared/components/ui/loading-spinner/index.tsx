@@ -5,9 +5,9 @@ export const LoadingSpinner = () => (
 		{new Array(6).fill(0).map((_item, index) => (
 			<div
 				key={index}
-				className="absolute inset-x-0 top-0 border-2 border-black"
+				className="absolute inset-0 top-0 border-2 border-neutral-700"
 				style={{
-					animation: `morph-to-circle-${index + 1} 3.5s cubic-bezier(1, 0.07, 0.38, 1.29) infinite;`,
+					animation: `morph-to-circle-${index + 1} 3s cubic-bezier(1, 0.07, 0.38, 1.29) infinite`,
 				}}
 			/>
 		))}
