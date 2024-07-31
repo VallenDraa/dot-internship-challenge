@@ -49,7 +49,10 @@ export const QuizSessionResult = (props: QuizSessionResultProps) => {
 	};
 
 	return (
-		<TransitionedCard className="flex h-min flex-col items-center gap-8">
+		<TransitionedCard
+			wrapperClassName="w-full sm:w-auto"
+			className="flex h-min flex-col items-center gap-8"
+		>
 			<div className="text-center">
 				<HeadingSubheading
 					heading="🏆️ Quiz Results"
