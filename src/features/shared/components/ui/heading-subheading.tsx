@@ -31,7 +31,7 @@ export const HeadingSubheading = (props: HeadingSubheadingProps) => {
 			)}
 			{React.createElement(
 				subHeadingType,
-				{ className: cn("text-neutral-700", classNames?.heading) },
+				{ className: cn("text-neutral-700", classNames?.subHeading) },
 				subHeading,
 			)}
 		</div>
